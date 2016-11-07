@@ -344,7 +344,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 1648040876}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
@@ -380,7 +380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e9399c282693e146a19aa6f3e69d4bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BulletPrefab: {fileID: 103640, guid: 3f18deadc1f767147afa9ecfc312c783, type: 2}
+  BulletPrefab: {fileID: 199478, guid: c48c4f4193abdf7428ef250c1bcca4ac, type: 2}
   SparkPrefab: {fileID: 163472, guid: f5d7519eae9f5c041a1ad5674affbc60, type: 2}
 --- !u!1 &1649627017
 GameObject:
