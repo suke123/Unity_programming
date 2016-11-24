@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 431818}
   - 198: {fileID: 19847380}
   - 199: {fileID: 19991924}
+  - 114: {fileID: 11439570}
   m_Layer: 0
   m_Name: ShootSpark
   m_TagString: Untagged
@@ -29,6 +30,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &11439570
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 163472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24748caeaca5a3143a31158a27efcb30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!198 &19847380
 ParticleSystem:
   m_ObjectHideFlags: 1
