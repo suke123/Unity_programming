@@ -456,7 +456,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BulletPrefab: {fileID: 193538, guid: 4fa9db554230e5b439dcafaa98d0fb5e, type: 2}
-  SparkPrefab: {fileID: 163472, guid: f5d7519eae9f5c041a1ad5674affbc60, type: 2}
+  SparkPrefab: {fileID: 100000, guid: 921a3ff88856fe04ebc86b196fd8cc59, type: 2}
 --- !u!1 &1649627017
 GameObject:
   m_ObjectHideFlags: 0
@@ -478,8 +478,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1649627017}
-  m_LocalRotation: {x: -0.42261833, y: 0, z: 0, w: 0.9063078}
-  m_LocalPosition: {x: -0.09199982, y: 1.034, z: -0.348}
+  m_LocalRotation: {x: -0.8778789, y: 0, z: 0, w: 0.47888276}
+  m_LocalPosition: {x: -0.004, y: 1.087, z: 0.109}
   m_LocalScale: {x: 0.2, y: 0.15868244, z: 0.14131756}
   m_Children: []
   m_Father: {fileID: 1648040880}

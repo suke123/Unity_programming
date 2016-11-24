@@ -238,4 +238,5 @@ Temp
 *.bin
 *Editor*
 Standard Assets
-.unity
+*.unity
+.prefab
