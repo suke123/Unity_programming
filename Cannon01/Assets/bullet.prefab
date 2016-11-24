@@ -132,6 +132,18 @@ Prefab:
       propertyPath: SparkPrefab
       value: 
       objectReference: {fileID: 163472, guid: f5d7519eae9f5c041a1ad5674affbc60, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_AngularDrag
+      value: 0.05
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 193538}
