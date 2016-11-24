@@ -21,10 +21,10 @@ public class Gun : MonoBehaviour {
     void Fire() {
         Transform tar = transform.Find("SparkLoc");
         Instantiate(
-            SparkPrefab,
-            tar.position,
-            transform.rotation
-        );
+             SparkPrefab,
+             tar.position,
+             transform.rotation
+         );
 
         GameObject bullet = (GameObject)Instantiate(
             BulletPrefab, 
