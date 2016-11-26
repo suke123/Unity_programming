@@ -44,6 +44,6 @@ public class Gun : MonoBehaviour {
             transform.rotation
         );
         Rigidbody rb = bullet.GetComponent<Rigidbody>();
-        rb.AddForce(transform.up * 30, ForceMode.VelocityChange);
+        rb.AddForce(transform.up * 35, ForceMode.VelocityChange);
     }
 }
