@@ -3,9 +3,9 @@ using System.Collections;
 
 public class EnemySpawn : MonoBehaviour {
     public GameObject enemy;   //敵オブジェクト
-    //public Transform ground;   //地面オブジェクト
+    public Transform ground;   //地面オブジェクト
     public float count = 5;    //一度に何体のオブジェクトをスポーンさせるか
-    public float interval = 5; //何秒おきに敵を発生させるか
+    public float interval = 500; //何秒おきに敵を発生させるか
     private float timer;
 
 	// Use this for initialization
@@ -29,7 +29,7 @@ public class EnemySpawn : MonoBehaviour {
         {
             float x = Random.Range(-130f,185f);
             float z = Random.Range(200f,264f);
-            Vector3 pos = new Vector3(x, 5, z);
+            Vector3 pos = new Vector3(x, 5, z) + ground.position;
             GameObject.Instantiate(enemy, pos, Quaternion.identity);
         }
     }
