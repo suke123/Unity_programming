@@ -4,9 +4,9 @@ using System.Collections;
 public class EnemySpawn : MonoBehaviour {
     public GameObject enemy;   //敵オブジェクト
     public Transform ground;   //地面オブジェクト
-    public float count = 5;    //一度に何体のオブジェクトをスポーンさせるか
-    public float interval = 500; //何秒おきに敵を発生させるか
-    private float timer;
+    public float count = 1;    //一度に何体のオブジェクトをスポーンさせるか
+    public float interval = 10000; //何秒おきに敵を発生させるか
+    private float timer; 
 
 	// Use this for initialization
 	void Start () {
