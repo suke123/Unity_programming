@@ -3,6 +3,8 @@ using System.Collections;
 
 public class EnemyGeneratorCtrl : MonoBehaviour
 {
+    private float speed = 10f;
+
     //生まれてくる敵プレハブ
     public GameObject enemyPrefab;
     //敵を格納
