@@ -5,6 +5,7 @@ public class Gun : MonoBehaviour {
 
     public GameObject BulletPrefab;
     public GameObject SparkPrefab;
+    public float gun_speed = 50;
 
 	// Use this for initialization
 	void Start () {
@@ -44,6 +45,6 @@ public class Gun : MonoBehaviour {
             transform.rotation
         );
         Rigidbody rb = bullet.GetComponent<Rigidbody>();
-        rb.AddForce(transform.up * 35, ForceMode.VelocityChange);
+        rb.AddForce(transform.up * gun_speed, ForceMode.VelocityChange);
     }
 }
