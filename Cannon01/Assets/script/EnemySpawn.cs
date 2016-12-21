@@ -6,11 +6,11 @@ public class EnemySpawn : MonoBehaviour {
     public Transform ground;   //地面オブジェクト
     public float count = 1;    //一度に何体のオブジェクトをスポーンさせるか
     public float interval = 10000; //何秒おきに敵を発生させるか
-    public float timer = 0; 
+    private float timer = 0; 
 
 	// Use this for initialization
 	void Start () {
-        //Spawn();  //初期のスポーン
+        Spawn();  //初期のスポーン
 	}
 	
 	// Update is called once per frame
