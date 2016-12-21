@@ -201,9 +201,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 1497571866021280, guid: 9ecfee85eafd09444bec11073e9525be, type: 2}
-  ground: {fileID: 1835714499}
-  count: 1
-  interval: 10000
+  ground: {fileID: 420914, guid: ee14ed5799411c14e963f991f46a2948, type: 2}
+  count: 2
+  interval: 5
 --- !u!4 &308327005
 Transform:
   m_ObjectHideFlags: 0
@@ -448,10 +448,6 @@ Transform:
   m_Father: {fileID: 1648040880}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1835714499 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 420914, guid: ee14ed5799411c14e963f991f46a2948, type: 2}
-  m_PrefabInternal: {fileID: 961970870}
 --- !u!1 &1870764232
 GameObject:
   m_ObjectHideFlags: 0
