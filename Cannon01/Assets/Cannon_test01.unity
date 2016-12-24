@@ -417,8 +417,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e9399c282693e146a19aa6f3e69d4bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BulletPrefab: {fileID: 0}
-  SparkPrefab: {fileID: 0}
+  BulletPrefab: {fileID: 193538, guid: 4fa9db554230e5b439dcafaa98d0fb5e, type: 2}
+  SparkPrefab: {fileID: 160898, guid: b0ddd10ad1ba7e440803fb58b918ea77, type: 2}
   gun_speed: 50
 --- !u!1 &1649627017
 GameObject:
