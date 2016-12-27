@@ -14,7 +14,7 @@ public class BulletBehaviour : MonoBehaviour {
 	}
 
     public GameObject ExplosionPrefab;
-    void OnCollisionEnter(Collider WHO){
+    void OnCollisionEnter(Collision WHO){
         Instantiate(
             ExplosionPrefab,
             transform.position,
@@ -24,10 +24,10 @@ public class BulletBehaviour : MonoBehaviour {
         Destroy(gameObject);
 
         //Enemyタグを持つオブジェクトに当たったら
-        if(WHO.tag == "Enemy")
+        if(WHO.gameObject.tag == "Enemy")
         {
             //Damage関数を実行する
-            WHO.SendMessage("Damage");
+            WHO.gameObject.SendMessage("Damage");
         }
     }
 }
