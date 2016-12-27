@@ -5,10 +5,7 @@ public class Gun : MonoBehaviour {
 
     public GameObject BulletPrefab;
     public GameObject SparkPrefab;
-    //public GameObject Base;
     public float gun_speed = 50;
-    //public float cannon_x = Input.GetAxis("Vertical");
-    //public float cannon_y = Input.GetAxis("Horizontal");
 
     // Use this for initialization
     void Start () {
