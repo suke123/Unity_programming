@@ -4,6 +4,7 @@ using System.Collections;
 public class EnemyBehavior : MonoBehaviour {
 
     private Transform player;
+    GameObject enemy_exist;
     public float enemySpeed = 2f;
     public float rotationSmooth = 1f;
 
@@ -15,6 +16,7 @@ public class EnemyBehavior : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         player = GameObject.FindWithTag("Player").transform;
+        enemy_exist = GameObject.Find("Stage"); //Stageオブジェクトに付属しているEnemySpawnを参照する
 	}
 	
 	// Update is called once per frame
@@ -34,6 +36,8 @@ public class EnemyBehavior : MonoBehaviour {
         if (life <= 0)
         {
             Dead();
+            EnemySpawn es = enemy_exist.GetComponent<EnemySpawn>();
+            es.enemy_exist--;   //EnemySpawnのenemy_existを-1する。
         }
     }
 

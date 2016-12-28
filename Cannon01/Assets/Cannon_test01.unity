@@ -236,8 +236,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 1497571866021280, guid: 9ecfee85eafd09444bec11073e9525be, type: 2}
   ground: {fileID: 420914, guid: ee14ed5799411c14e963f991f46a2948, type: 2}
-  count: 2
+  count: 1
   interval: 5
+  enemy_exist: 0
+  max_exist: 8
 --- !u!4 &308327005
 Transform:
   m_ObjectHideFlags: 0
@@ -563,7 +565,7 @@ MonoBehaviour:
   m_Direction: 0
   m_MinValue: 0
   m_MaxValue: 100
-  m_WholeNumbers: 0
+  m_WholeNumbers: 1
   m_Value: 55
   m_OnValueChanged:
     m_PersistentCalls:
@@ -894,7 +896,7 @@ RectTransform:
   m_GameObject: {fileID: 1851301473}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -50.083973}
-  m_LocalScale: {x: 0.000060000002, y: 0.00002, z: 0.00002}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1843540872}
   m_Father: {fileID: 1353666951}
@@ -1039,7 +1041,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
