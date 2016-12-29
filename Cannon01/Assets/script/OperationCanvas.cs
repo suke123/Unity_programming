@@ -12,7 +12,6 @@ public class OperarionCanvas : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         rotateCamera = Camera.main;
-
 	}
 	
 	// Update is called once per frame
