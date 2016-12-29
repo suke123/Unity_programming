@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class BulletBehaviour : MonoBehaviour {
+    public int damage = 3;      //鉄球のダメージ
 
 	// Use this for initialization
 	void Start () {
@@ -26,8 +27,8 @@ public class BulletBehaviour : MonoBehaviour {
         //Enemyタグを持つオブジェクトに当たったら
         if(WHO.gameObject.tag == "Enemy")
         {
-            //Damage関数を実行する
-            WHO.gameObject.SendMessage("Damage");
+            //Damage関数を実行する。引数として弾のダメージを渡す
+            WHO.gameObject.SendMessage("Damage", damage);
         }
     }
 }

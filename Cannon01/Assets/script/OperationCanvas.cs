@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class OperarionCanvas : MonoBehaviour {
 
     public Camera rotateCamera;
-    //public 
+    public Slider hpSlider;
+    float damage;
 
 	// Use this for initialization
 	void Start () {

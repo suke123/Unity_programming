@@ -29,9 +29,9 @@ public class EnemyBehavior : MonoBehaviour {
     }
 
     //Damage関数、弾が当たった時の処理
-    public void Damage()
+    public void Damage(int damage)
     {
-        life -= 1;
+        life -= damage;
         if (life <= 0)
         {
             Dead();
