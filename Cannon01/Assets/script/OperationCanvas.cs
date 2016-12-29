@@ -5,10 +5,12 @@ using UnityEngine;
 public class OperarionCanvas : MonoBehaviour {
 
     public Camera rotateCamera;
+    //public 
 
 	// Use this for initialization
 	void Start () {
         rotateCamera = Camera.main;
+
 	}
 	
 	// Update is called once per frame

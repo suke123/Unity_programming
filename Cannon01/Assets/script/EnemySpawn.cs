@@ -25,6 +25,13 @@ public class EnemySpawn : MonoBehaviour {
         }
 	}
 
+    //敵が減った時に減った分の敵をフィールドに生成する関数
+    public void ReSpawn()
+    {
+        enemy_exist -= 1;
+        //Spawn();
+    }
+
     void Spawn()
     {
         if (enemy_exist < max_exist)
@@ -38,11 +45,5 @@ public class EnemySpawn : MonoBehaviour {
                 enemy_exist++;
             }
         }
-    }
-
-    //敵が減った時に減った分の敵をフィールドに生成する関数
-    void ReSpawn()
-    {
-        enemy_exist--;
     }
 }

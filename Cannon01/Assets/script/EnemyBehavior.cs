@@ -39,7 +39,7 @@ public class EnemyBehavior : MonoBehaviour {
             EnemySpawn es = enemy_exist.GetComponent<EnemySpawn>();
             es.enemy_exist--;   //EnemySpawnのenemy_existを-1する。*/
             //AddEnemy();
-            SendMessage("ReSpawn");
+            GameObject.Find("EnemySpawn").SendMessage("ReSpawn");
         }
     }
 
