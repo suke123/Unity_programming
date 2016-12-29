@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class EnemyBehavior : MonoBehaviour {
 
@@ -7,6 +8,7 @@ public class EnemyBehavior : MonoBehaviour {
     GameObject enemy_exist;
     public float enemySpeed = 2f;
     public float rotationSmooth = 1f;
+    public Slider hpSlider;
 
     //ライフの設定（[]によって、privateな変数でもInspectorで設定できる）
     [SerializeField]
@@ -31,6 +33,7 @@ public class EnemyBehavior : MonoBehaviour {
     //Damage関数、弾が当たった時の処理
     public void Damage(int damage)
     {
+        hpSlider.value -= damage;
         life -= damage;
         if (life <= 0)
         {
