@@ -27,9 +27,9 @@ public class EnemySpawn : MonoBehaviour {
 
     void Spawn()
     {
-        for (int i = 0; i < count; i++)
+        if (enemy_exist < max_exist)
         {
-            if (enemy_exist <= max_exist)
+            for (int i = 0; i < count; i++)
             {
                 float x = Random.Range(-130f, 185f);
                 float z = Random.Range(200f, 264f);
@@ -38,5 +38,11 @@ public class EnemySpawn : MonoBehaviour {
                 enemy_exist++;
             }
         }
+    }
+
+    //敵が減った時に減った分の敵をフィールドに生成する関数
+    void ReSpawn()
+    {
+        enemy_exist--;
     }
 }

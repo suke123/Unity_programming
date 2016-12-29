@@ -35,9 +35,11 @@ public class EnemyBehavior : MonoBehaviour {
         if (life <= 0)
         {
             Dead();
-            enemy_exist = GameObject.Find("Stage"); //Stageオブジェクトに付属しているEnemySpawnを参照する
+            /*enemy_exist = GameObject.Find("Stage"); //Stageオブジェクトに付属しているEnemySpawnを参照する
             EnemySpawn es = enemy_exist.GetComponent<EnemySpawn>();
-            es.enemy_exist--;   //EnemySpawnのenemy_existを-1する。
+            es.enemy_exist--;   //EnemySpawnのenemy_existを-1する。*/
+            //AddEnemy();
+            SendMessage("ReSpawn");
         }
     }
 
