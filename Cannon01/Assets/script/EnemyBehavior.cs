@@ -45,11 +45,12 @@ public class EnemyBehavior : MonoBehaviour {
     void Dead()
     {
         Destroy(gameObject);
-
         if (particle != null)   //撃破エフェクトパーティクルを設定していなくても、エラーが起きないためのものです。
         {
             //撃破エフェクトの生成
             Instantiate(particle, transform.position, Quaternion.identity);
         }
+        GameObject oc = GameObject.Find("Canvas") as GameObject;
+        oc.GetComponent<OperarionCanvas>().Disable();
     }
 }
