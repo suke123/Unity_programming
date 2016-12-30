@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class BulletBehaviour : MonoBehaviour {
-    public int damage = 1;      //鉄球のダメージ
+    public int damage = 1;      //鉄球のダメージ.
 
 	// Use this for initialization
 	void Start () {
@@ -24,11 +24,12 @@ public class BulletBehaviour : MonoBehaviour {
 
         Destroy(gameObject);
 
-        //Enemyタグを持つオブジェクトに当たったら
+        //Enemyタグを持つオブジェクトに当たったら.
         if(WHO.gameObject.tag == "Enemy")
         {
-            //Damage関数を実行する。引数として弾のダメージを渡す
+            //Damage関数を実行する。引数として弾のダメージを渡す.
             WHO.gameObject.SendMessage("Damage", damage);
+            GameObject.Find("OperationCanvas").SendMessage("Damage", damage);
         }
     }
 }

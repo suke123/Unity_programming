@@ -3,15 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class OperarionCanvas : MonoBehaviour {
+public class OperationCanvas : MonoBehaviour {
 
     public Camera rotateCamera;
     public Slider hpSlider;
+    private float hpmax;
 
 	// Use this for initialization
 	void Start () {
         rotateCamera = Camera.main;
-
+        hpSlider = GetComponent<Slider>();
+        //int enemyLife = GetComponent<EnemyBehavior>().life;
+        //hpSlider.value = enemyLife;
 	}
 	
 	// Update is called once per frame
