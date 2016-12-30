@@ -18,6 +18,7 @@ public class EnemyBehavior : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         player = GameObject.FindWithTag("Player").transform;
+        //hoSlider = 
 	}
 	
 	// Update is called once per frame
@@ -33,8 +34,8 @@ public class EnemyBehavior : MonoBehaviour {
     //Damage関数、弾が当たった時の処理
     public void Damage(int damage)
     {
-        hpSlider.value -= damage;
         life -= damage;
+        hpSlider.value -= damage;
         if (life <= 0)
         {
             Dead();

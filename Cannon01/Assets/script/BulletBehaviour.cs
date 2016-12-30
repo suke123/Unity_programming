@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class BulletBehaviour : MonoBehaviour {
-    public int damage = 3;      //鉄球のダメージ
+    public int damage = 1;      //鉄球のダメージ
 
 	// Use this for initialization
 	void Start () {
