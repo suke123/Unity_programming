@@ -43,7 +43,8 @@ public class EnemyBehavior : MonoBehaviour {
             EnemySpawn es = enemy_exist.GetComponent<EnemySpawn>();
             es.enemy_exist--;   //EnemySpawnのenemy_existを-1する。*/
             //AddEnemy();
-            GameObject.Find("EnemySpawn").SendMessage("ReSpawn");
+            EnemySpawn es = GetComponent<EnemySpawn>();
+            es.ReSpawn();
         }
     }
 
@@ -56,7 +57,5 @@ public class EnemyBehavior : MonoBehaviour {
             //撃破エフェクトの生成.
             Instantiate(particle, transform.position, Quaternion.identity);
         }
-        //GameObject oc = GameObject.Find("Canvas") as GameObject;
-        //oc.GetComponent<OperationCanvas>().Disable();
     }
 }

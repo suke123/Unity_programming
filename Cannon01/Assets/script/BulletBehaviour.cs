@@ -29,7 +29,8 @@ public class BulletBehaviour : MonoBehaviour {
         {
             //Damage関数を実行する。引数として弾のダメージを渡す.
             WHO.gameObject.SendMessage("Damage", damage);
-            GameObject.Find("OperationCanvas").SendMessage("Damage", damage);
+            OperationCanvas os = GetComponent<OperationCanvas>();
+            os.Damage(damage);
         }
     }
 }

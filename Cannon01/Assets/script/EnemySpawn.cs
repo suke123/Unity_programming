@@ -42,7 +42,7 @@ public class EnemySpawn : MonoBehaviour {
                 float z = Random.Range(200f, 264f);
                 Vector3 pos = new Vector3(x, 5, z);// + ground.position;
                 GameObject.Instantiate(enemy, pos, Quaternion.identity);
-                enemy_exist++;
+                enemy_exist += 1;
             }
         }
     }
