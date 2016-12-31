@@ -20,7 +20,7 @@ public class BulletBehaviour : MonoBehaviour {
             ExplosionPrefab,
             transform.position,
             transform.rotation
-            );
+        );
 
         Destroy(gameObject);
 
@@ -30,7 +30,14 @@ public class BulletBehaviour : MonoBehaviour {
             //Damage関数を実行する。引数として弾のダメージを渡す.
             WHO.gameObject.SendMessage("Damage", damage);
             OperationCanvas os = GetComponent<OperationCanvas>();
-            os.Damage(damage);
+            if(os != null)
+            {
+                os.Damage(damage);
+            }
+            else
+            {
+                Debug.LogWarning("ダメージがHPゲージに対応してないよ");
+            }
         }
     }
 }

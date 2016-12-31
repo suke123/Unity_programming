@@ -28,8 +28,8 @@ public class EnemySpawn : MonoBehaviour {
     //敵が減った時に減った分の敵をフィールドに生成する関数.
     public void ReSpawn()
     {
-        enemy_exist -= 1;
-        Spawn();
+        this.enemy_exist -= 1;
+        //Spawn();
     }
 
     void Spawn()
@@ -42,7 +42,7 @@ public class EnemySpawn : MonoBehaviour {
                 float z = Random.Range(200f, 264f);
                 Vector3 pos = new Vector3(x, 5, z);// + ground.position;
                 GameObject.Instantiate(enemy, pos, Quaternion.identity);
-                enemy_exist += 1;
+                this.enemy_exist += 1;
             }
         }
     }

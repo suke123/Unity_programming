@@ -15,11 +15,17 @@ public class Gun : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         Transform Base = transform.parent;
-        Base.Rotate(
-            new Vector3(0, Input.GetAxis("Horizontal") * 60.0f * Time.deltaTime, 0),
-            Space.World
-        );
-
+        if(Base != null){
+            Base.Rotate(
+                new Vector3(0, Input.GetAxis("Horizontal") * 60.0f * Time.deltaTime, 0),
+                Space.World
+            );
+        }
+        else
+        {
+            Debug.LogWarning("Set Base!");
+        }
+      
         transform.Rotate(
             new Vector3(Input.GetAxis("Vertical") * 60.0f * Time.deltaTime, 0, 0),
             Space.Self
@@ -34,11 +40,18 @@ public class Gun : MonoBehaviour {
 
     void Fire() {
         Transform tar = transform.Find("SparkLoc");
-        Instantiate(
-             SparkPrefab,
-             tar.position,
-             transform.rotation
-         );
+        if(tar != null)
+        {
+            Instantiate(
+                SparkPrefab,
+                tar.position,
+                transform.rotation
+            );
+        }
+        else
+        {
+            Debug.LogWarning("Set tar!");
+        }
 
         GameObject bullet = (GameObject)Instantiate(
             BulletPrefab, 

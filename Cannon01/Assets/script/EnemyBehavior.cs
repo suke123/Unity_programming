@@ -44,7 +44,14 @@ public class EnemyBehavior : MonoBehaviour {
             es.enemy_exist--;   //EnemySpawnのenemy_existを-1する。*/
             //AddEnemy();
             EnemySpawn es = GetComponent<EnemySpawn>();
-            es.ReSpawn();
+            if (es != null)
+            {
+                es.ReSpawn();
+            }
+            else
+            {
+                Debug.LogWarning("Set es!");
+            }
         }
     }
 
