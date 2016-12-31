@@ -12,7 +12,7 @@ public class EnemyBehavior : MonoBehaviour {
 
     //ライフの設定（[]によって、privateな変数でもInspectorで設定できる）.
     [SerializeField]
-    public int life = 3;           //Enemyのライフ（仮）.
+    private int life = 3;           //Enemyのライフ（仮）.
     public GameObject particle;     //敵が撃破された時のエフェクト.
 
 	// Use this for initialization

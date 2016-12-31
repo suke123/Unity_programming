@@ -33,12 +33,12 @@ public class Gun : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            this.Fire();
+            Fire();
         }
 
     }
 
-    void Fire() {
+    public void Fire() {
         Transform tar = transform.Find("SparkLoc");
         if(tar != null)
         {
