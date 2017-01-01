@@ -9,8 +9,9 @@ public class Gun : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-
-	}
+        //transform.parent = GameObject.Find("Base").transform;
+        //Transform tar = GameObject.Find("SparkLoc").transform;
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -39,8 +40,9 @@ public class Gun : MonoBehaviour {
     }
 
     public void Fire() {
+        //Transform tar = GameObject.Find("SparkLoc").transform;
         Transform tar = transform.Find("SparkLoc");
-        if(tar != null)
+        if (tar != null)
         {
             Instantiate(
                 SparkPrefab,
