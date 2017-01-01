@@ -34,7 +34,7 @@ public class Gun : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Fire();
+            this.Fire();
         }
 
     }
