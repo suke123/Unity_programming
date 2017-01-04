@@ -13,6 +13,7 @@ public class OperationCanvas : MonoBehaviour {
     void Start()
     {
         rotateCamera = Camera.main;
+        hpSlider = GameObject.Find("Slider").GetComponent<Slider>();
     }
 	
 	// Update is called once per frame
@@ -27,6 +28,6 @@ public class OperationCanvas : MonoBehaviour {
 
     public void Damage(int damage)
     {
-        hpSlider.value -= damage;
+        hpSlider.value = damage;
     }
 }

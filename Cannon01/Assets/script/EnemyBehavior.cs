@@ -5,7 +5,8 @@ using UnityEngine.UI;
 public class EnemyBehavior : MonoBehaviour {
 
     private Transform player;
-    GameObject enemy_exist;
+    //GameObject enemy_exist;
+    GameObject enemy;
     public float enemySpeed = 2f;
     public float rotationSmooth = 1f;
     //public Slider hpSlider;
@@ -18,7 +19,7 @@ public class EnemyBehavior : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         player = GameObject.FindWithTag("Player").transform;
-        //hoSlider = 
+        enemy = GameObject.Find("enemy");
 	}
 	
 	// Update is called once per frame
@@ -43,7 +44,7 @@ public class EnemyBehavior : MonoBehaviour {
             EnemySpawn es = enemy_exist.GetComponent<EnemySpawn>();
             es.enemy_exist--;   //EnemySpawnのenemy_existを-1する。*/
             //AddEnemy();
-            EnemySpawn es = GetComponent<EnemySpawn>();
+            EnemySpawn es = enemy.GetComponent<EnemySpawn>();
             if (es != null)
             {
                 es.ReSpawn();
