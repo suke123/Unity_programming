@@ -13,6 +13,7 @@ public class EnemySpawn : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         Spawn();  //初期のスポーン.
+        enemy_exist += 1;
 	}
 	
 	// Update is called once per frame
@@ -42,7 +43,7 @@ public class EnemySpawn : MonoBehaviour {
                 float z = Random.Range(200f, 264f);
                 Vector3 pos = new Vector3(x, 5, z);// + ground.position;
                 GameObject.Instantiate(enemy, pos, Quaternion.identity);
-                this.enemy_exist += 1;
+                enemy_exist += 1;
             }
         }
     }

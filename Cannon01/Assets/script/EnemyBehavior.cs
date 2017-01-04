@@ -19,7 +19,7 @@ public class EnemyBehavior : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         player = GameObject.FindWithTag("Player").transform;
-        spawner = GameObject.Find("Spawner");
+        //spawner = GameObject.Find("Spawner");
 	}
 	
 	// Update is called once per frame
@@ -44,7 +44,8 @@ public class EnemyBehavior : MonoBehaviour {
             EnemySpawn es = enemy_exist.GetComponent<EnemySpawn>();
             es.enemy_exist--;   //EnemySpawnのenemy_existを-1する。*/
             //AddEnemy();
-            EnemySpawn es = spawner.GetComponent<EnemySpawn>();
+            //EnemySpawn es = spawner.GetComponent<EnemySpawn>();
+            EnemySpawn es = GetComponent<EnemySpawn>();
             if (es != null)
             {
                 es.ReSpawn();
