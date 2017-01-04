@@ -6,7 +6,7 @@ public class EnemyBehavior : MonoBehaviour {
 
     private Transform player;
     //GameObject enemy_exist;
-    GameObject enemy;
+    GameObject spawner;
     public float enemySpeed = 2f;
     public float rotationSmooth = 1f;
     //public Slider hpSlider;
@@ -19,7 +19,7 @@ public class EnemyBehavior : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         player = GameObject.FindWithTag("Player").transform;
-        enemy = GameObject.Find("enemy");
+        spawner = GameObject.Find("Spawner");
 	}
 	
 	// Update is called once per frame
@@ -44,7 +44,7 @@ public class EnemyBehavior : MonoBehaviour {
             EnemySpawn es = enemy_exist.GetComponent<EnemySpawn>();
             es.enemy_exist--;   //EnemySpawnのenemy_existを-1する。*/
             //AddEnemy();
-            EnemySpawn es = enemy.GetComponent<EnemySpawn>();
+            EnemySpawn es = spawner.GetComponent<EnemySpawn>();
             if (es != null)
             {
                 es.ReSpawn();
