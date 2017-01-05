@@ -22,6 +22,7 @@ public class BulletBehaviour : MonoBehaviour {
             transform.rotation
         );
 
+
         Destroy(gameObject);
 
         //Enemyタグを持つオブジェクトに当たったら.
