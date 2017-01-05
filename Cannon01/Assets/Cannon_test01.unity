@@ -203,7 +203,7 @@ MonoBehaviour:
   enemy: {fileID: 1905659220631274, guid: 9ecfee85eafd09444bec11073e9525be, type: 2}
   ground: {fileID: 420914, guid: ee14ed5799411c14e963f991f46a2948, type: 2}
   count: 1
-  interval: 5
+  interval: 10
   enemy_exist: 0
   max_exist: 8
 --- !u!4 &308327005

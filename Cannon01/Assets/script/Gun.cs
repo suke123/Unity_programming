@@ -5,9 +5,9 @@ public class Gun : MonoBehaviour {
 
     public GameObject BulletPrefab;
     public GameObject SparkPrefab;
-    public Transform muzzle;
+    //public Transform muzzle;
     public float gun_speed = 50;
-    public int bulletSpeed = 2;
+    /*public int bulletSpeed = 2;
 
     public GameObject trajectory;
     public GameObject targetMarker;
@@ -22,8 +22,8 @@ public class Gun : MonoBehaviour {
     //private GameObject bullet;
 
     private Vector3 force;
-    private List<GameObject> trajectorys = new List<GameObject>();
-    private float flightDuration;
+    //private List<GameObject> trajectorys = new List<GameObject>();
+    private float flightDuration;*/
 
     // Use this for initialization
     void Start () {
@@ -33,12 +33,12 @@ public class Gun : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        firingAngle = 90.0f - muzzle.transform.rotation.eulerAngles.x + 2.0f;
-        baseRotationAngle = transform.parent.rotation.eulerAngles.y;
+        //firingAngle = 90.0f - muzzle.transform.rotation.eulerAngles.x + 2.0f;
+        //baseRotationAngle = transform.parent.rotation.eulerAngles.y;
 
         // Calculate distance to target
-        targetDistance = Mathf.Pow(gun_speed, 2) * Mathf.Sin(2 * firingAngle * Mathf.Deg2Rad) / gravity;
-        force = CalcForce();
+        //targetDistance = Mathf.Pow(gun_speed, 2) * Mathf.Sin(2 * firingAngle * Mathf.Deg2Rad) / gravity;
+        //force = CalcForce();
 
         Transform Base = transform.parent;
         if(Base != null){
@@ -59,14 +59,14 @@ public class Gun : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            this.Fire(force);
+            this.Fire(/*force*/);
         }
 
-        CalcTrajectory(force);
+        //CalcTrajectory(force);
 
     }
 
-    public void Fire(Vector3 force) {
+    public void Fire(/*Vector3 force*/) {
         //Transform tar = GameObject.Find("SparkLoc").transform;
         Transform tar = transform.Find("SparkLoc");
         if (tar != null)
@@ -91,7 +91,7 @@ public class Gun : MonoBehaviour {
         rb.AddForce(transform.up * gun_speed, ForceMode.VelocityChange);
     }
 
-    Vector3 CalcForce()
+    /*Vector3 CalcForce()
     {
         // Calculate the velocity needed to throw the object to the target at specified angle.
         float projectile_Velocity = gun_speed;//Mathf.Sqrt(targetDistance / (Mathf.Sin(2 * firingAngle * Mathf.Deg2Rad) / gravity));
@@ -108,7 +108,7 @@ public class Gun : MonoBehaviour {
 
     void CalcTrajectory(Vector3 force)
     {
-        ClearTrajectory();
+        //ClearTrajectory();
 
         float time = 0.5f;
         //int limit = (int)flightDuration;
@@ -123,18 +123,18 @@ public class Gun : MonoBehaviour {
                 //trajectorys.Add(targetMarker);
                 break;
             }
-            /*
+            
             GameObject sp = (GameObject)Instantiate(trajectory, pos, transform.rotation);
             sp.transform.parent = transform;
             Destroy(sp.GetComponent<SphereCollider>());
             //sp.GetComponent<Renderer>().material = material;
             trajectorys.Add(sp);
-            /**/
+            
         }
 
-    }
+    }*/
 
-    void ClearTrajectory()
+    /*void ClearTrajectory()
     {
         foreach (GameObject obj in trajectorys)
         {
@@ -144,11 +144,11 @@ public class Gun : MonoBehaviour {
         }
 
         trajectorys.Clear();
-    }
+    }*/
 
-    Vector3 CalcPositionFromForce(float time, float mass, Vector3 startPosition, Vector3 force, Vector3 gravity)
+    /*Vector3 CalcPositionFromForce(float time, float mass, Vector3 startPosition, Vector3 force, Vector3 gravity)
     {
-        Vector3 speed = (force / mass) /* * Time.fixedDeltaTime*/;
+        Vector3 speed = (force / mass)/* * Time.fixedDeltaTime;
         Vector3 position = (speed * time) + (gravity * 0.5f * Mathf.Pow(time, 2));
 
         return startPosition + position;
@@ -198,5 +198,5 @@ public class Gun : MonoBehaviour {
 
             yield return null;
         }
-    }
+    }*/
 }
