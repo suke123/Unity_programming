@@ -27,11 +27,11 @@ public class EnemySpawn : MonoBehaviour {
 	}
 
     //敵が減った時に減った分の敵をフィールドに生成する関数.
-    public void ReSpawn()
+    /*public void ReSpawn()
     {
         this.enemy_exist -= 1;
         //Spawn();
-    }
+    }*/
 
     void Spawn()
     {

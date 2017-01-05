@@ -7,7 +7,7 @@ public class Gun : MonoBehaviour {
     public GameObject SparkPrefab;
     public Transform muzzle;
     public float gun_speed = 50;
-    public int bulletspeed = 2;
+    public int bulletSpeed = 2;
 
     public GameObject trajectory;
     public GameObject targetMarker;
