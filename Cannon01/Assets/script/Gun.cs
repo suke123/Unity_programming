@@ -1,97 +1,95 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Gun : MonoBehaviour {
 
     public GameObject BulletPrefab;
     public GameObject SparkPrefab;
-    //public Transform muzzle;
+    public Transform muzzle;
     public float gun_speed = 50;
-    /*public int bulletSpeed = 2;
+    public int life = 6;
+    public LifePanel lifePanel;     //自分HP
+
+    //public EnemyBehavior enemyForce;    //敵の攻撃力
+    //public int enemy_force;
 
     public GameObject trajectory;
     public GameObject targetMarker;
     public Material material;
-    //public int limit = 10;
-
+      
     public float targetDistance = 0.0f;
     public float firingAngle = 45.0f;
     public float baseRotationAngle = 0.0f;
     public float gravity = 9.8f;
 
-    //private GameObject bullet;
+    public float maxMuzzleAngle = 90.0f;
+    public float minMuzzleAngle = 45.0f;
+    public float maxBaseAngle = 60.0f;
+    public float minBaseAngle = -60.0f;
+    public float moveSpeed = 60.0f;
 
     private Vector3 force;
-    //private List<GameObject> trajectorys = new List<GameObject>();
-    private float flightDuration;*/
+    private List<GameObject> trajectorys = new List<GameObject>();
 
     // Use this for initialization
     void Start () {
-        //transform.parent = GameObject.Find("Base").transform;
-        //Transform tar = GameObject.Find("SparkLoc").transform;
+        //enemy_force = enemyForce.EnemyForce();
     }
 	
 	// Update is called once per frame
 	void Update () {
-        //firingAngle = 90.0f - muzzle.transform.rotation.eulerAngles.x + 2.0f;
-        //baseRotationAngle = transform.parent.rotation.eulerAngles.y;
 
-        // Calculate distance to target
-        //targetDistance = Mathf.Pow(gun_speed, 2) * Mathf.Sin(2 * firingAngle * Mathf.Deg2Rad) / gravity;
-        //force = CalcForce();
+        firingAngle = 90.0f - muzzle.transform.rotation.eulerAngles.x + 2.0f;
+        baseRotationAngle = transform.parent.rotation.eulerAngles.y;
+        
+        force = CalcForce();
+        
+        if (Input.GetKeyDown(KeyCode.Space)){
+            Fire(force);
+        }
 
         Transform Base = transform.parent;
-        if(Base != null){
-            Base.Rotate(
-                new Vector3(0, Input.GetAxis("Horizontal") * 60.0f * Time.deltaTime, 0),
-                Space.World
-            );
-        }
-        else
-        {
-            Debug.LogWarning("Set Base!");
-        }
-      
-        transform.Rotate(
-            new Vector3(Input.GetAxis("Vertical") * 60.0f * Time.deltaTime, 0, 0),
-            Space.Self
-        );
+        float turnV = Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
+        float rotateX = transform.eulerAngles.x;
+        // 現在の回転角度に入力(turn)を加味した回転角度をMathf.Clamp()を使いminMuzzleAngleからMaxMuzzleAngle内に収まるようにする
+        float angleX = Mathf.Clamp(rotateX + turnV, minMuzzleAngle, maxMuzzleAngle);
+        transform.rotation = Quaternion.Euler(angleX, Base.eulerAngles.y, 0);
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            this.Fire(/*force*/);
-        }
+        float turnH = Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
+        //現在の回転角度を0～360から-180～180に変換
+        float rotateY = (Base.eulerAngles.y > 180) ? Base.eulerAngles.y - 360 : Base.eulerAngles.y;
+        // 現在の回転角度に入力(turn)を加味した回転角度をMathf.Clamp()を使いminBaseAngleからMaxBaseAngle内に収まるようにする
+        float angleY = Mathf.Clamp(rotateY + turnH, minBaseAngle, maxBaseAngle);
+        // 回転角度を-180～180から0～360に変換
+        angleY = (angleY < 0) ? angleY + 360 : angleY;
+        Base.rotation = Quaternion.Euler(0, angleY, 0);
 
-        //CalcTrajectory(force);
+        CalcTrajectory(force);
 
     }
 
-    public void Fire(/*Vector3 force*/) {
-        //Transform tar = GameObject.Find("SparkLoc").transform;
+    void Fire(Vector3 force) {
         Transform tar = transform.Find("SparkLoc");
-        if (tar != null)
-        {
-            Instantiate(
-                SparkPrefab,
-                tar.position,
-                transform.rotation
-            );
-        }
-        else
-        {
-            Debug.LogWarning("Set tar!");
-        }
+        Instantiate(
+             SparkPrefab,
+             tar.position,
+             transform.rotation
+         );
 
         GameObject bullet = (GameObject)Instantiate(
-            BulletPrefab, 
-            transform.position, 
-            transform.rotation
+         BulletPrefab,
+         muzzle.transform.position,
+         transform.rotation
         );
+
         Rigidbody rb = bullet.GetComponent<Rigidbody>();
-        rb.AddForce(transform.up * gun_speed, ForceMode.VelocityChange);
+        rb.AddForce(force, ForceMode.Impulse);
+        GetComponent<AudioSource>().Play();
+
     }
 
-    /*Vector3 CalcForce()
+    Vector3 CalcForce()
     {
         // Calculate the velocity needed to throw the object to the target at specified angle.
         float projectile_Velocity = gun_speed;//Mathf.Sqrt(targetDistance / (Mathf.Sin(2 * firingAngle * Mathf.Deg2Rad) / gravity));
@@ -100,41 +98,43 @@ public class Gun : MonoBehaviour {
         float Vx = projectile_Velocity * Mathf.Cos(firingAngle * Mathf.Deg2Rad);
         float Vy = projectile_Velocity * Mathf.Sin(firingAngle * Mathf.Deg2Rad);
 
-        flightDuration = targetDistance / Vx;
-        Debug.Log(flightDuration);
+        // Calculate distance to target
+        targetDistance = Mathf.Pow(gun_speed, 2) * Mathf.Sin(2 * firingAngle * Mathf.Deg2Rad) / gravity;
+
+        //flightDuration = targetDistance / Vx;
+        //Debug.Log(flightDuration);
 
         return new Vector3(Vx * Mathf.Sin(baseRotationAngle * Mathf.Deg2Rad), Vy, Vx * Mathf.Cos(baseRotationAngle * Mathf.Deg2Rad));
     }
 
     void CalcTrajectory(Vector3 force)
     {
-        //ClearTrajectory();
+        ClearTrajectory();
 
         float time = 0.5f;
-        //int limit = (int)flightDuration;
-        for (int i = 1; ; i++)
-        {
+        
+        for(int i = 1;; i++){
             Vector3 pos = CalcPositionFromForce(time * i, BulletPrefab.GetComponent<Rigidbody>().mass, muzzle.position, force, Physics.gravity);
             if (pos.y < 0)
             {
-                Vector3 prePos = CalcPositionFromForce(time * (i - 1), BulletPrefab.GetComponent<Rigidbody>().mass, muzzle.position, force, Physics.gravity);
+                Vector3 prePos = CalcPositionFromForce(time * (i-1), BulletPrefab.GetComponent<Rigidbody>().mass, muzzle.position, force, Physics.gravity);
                 Vector3 impactPos = CalcImpactPos(pos, prePos);
                 targetMarker.transform.position = impactPos;
                 //trajectorys.Add(targetMarker);
                 break;
             }
-            
+            /*
             GameObject sp = (GameObject)Instantiate(trajectory, pos, transform.rotation);
             sp.transform.parent = transform;
             Destroy(sp.GetComponent<SphereCollider>());
             //sp.GetComponent<Renderer>().material = material;
             trajectorys.Add(sp);
-            
+            /**/
         }
 
-    }*/
+    }
 
-    /*void ClearTrajectory()
+    void ClearTrajectory()
     {
         foreach (GameObject obj in trajectorys)
         {
@@ -144,11 +144,11 @@ public class Gun : MonoBehaviour {
         }
 
         trajectorys.Clear();
-    }*/
+    }
 
-    /*Vector3 CalcPositionFromForce(float time, float mass, Vector3 startPosition, Vector3 force, Vector3 gravity)
+    Vector3 CalcPositionFromForce(float time, float mass, Vector3 startPosition, Vector3 force, Vector3 gravity)
     {
-        Vector3 speed = (force / mass)/* * Time.fixedDeltaTime;
+        Vector3 speed = (force / mass);
         Vector3 position = (speed * time) + (gravity * 0.5f * Mathf.Pow(time, 2));
 
         return startPosition + position;
@@ -156,47 +156,26 @@ public class Gun : MonoBehaviour {
 
     Vector3 CalcImpactPos(Vector3 pos, Vector3 prePos)
     {
-        float x, y = 0, z;
+        float x, z;
         if ((pos.x - prePos.x) == 0) x = pos.x;
         else x = -prePos.y / (pos.y - prePos.y) * (pos.x - prePos.x) + prePos.x;
-        //if ((pos.y - prePos.y) == 0) y = pos.y;
+        
         if ((pos.z - prePos.z) == 0) z = pos.z;
         else z = -prePos.y / (pos.y - prePos.y) * (pos.z - prePos.z) + prePos.z;
 
         return new Vector3(x, 0.5f, z);
     }
 
-    IEnumerator SimulateProjectile()
+    public int Life()
     {
-        // Short delay added before Projectile is thrown
-        //yield return new WaitForSeconds(1.5f);
+        return life;
+    }
 
-        // Move projectile to the position of throwing object + add some offset if needed.
-        //bullet.transform.position = myTransform.position + new Vector3(0, 0.0f, 0);
+    public void isDamaged(int enemy_force)
+    {
+        life -= enemy_force;
+        Debug.Log(life);
+        lifePanel.UpdateLife(life);
+    }
 
-        // Calculate the velocity needed to throw the object to the target at specified angle.
-        float projectile_Velocity = gun_speed;//Mathf.Sqrt(targetDistance / (Mathf.Sin(2 * firingAngle * Mathf.Deg2Rad) / gravity));
-
-        // Extract the X  Y componenent of the velocity
-        float Vx = projectile_Velocity * Mathf.Cos(firingAngle * Mathf.Deg2Rad);
-        float Vy = projectile_Velocity * Mathf.Sin(firingAngle * Mathf.Deg2Rad);
-
-        // Calculate flight time.
-        float flightDuration = targetDistance / Vx;
-        Debug.Log(flightDuration);
-
-        // Rotate projectile to face the target.
-        //bullet.transform.rotation = Quaternion.LookRotation(Target.position - bullet.transform.position);
-
-        float elapse_time = 0;
-
-        while (elapse_time < flightDuration)
-        {
-            //bullet.transform.Translate(0, (Vy - (gravity * elapse_time * bulletSpeed)) * Time.deltaTime, Vx * Time.deltaTime * bulletSpeed);
-
-            elapse_time += Time.deltaTime;
-
-            yield return null;
-        }
-    }*/
 }

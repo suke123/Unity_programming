@@ -17,6 +17,6 @@ public class SceneLoad_Title_to_Select : MonoBehaviour {
 
     public void SceneLoad()
     {
-        SceneManager.LoadScene("Stage_Select");
+        SceneManager.LoadScene("Cannon_test01");
     }
 }
