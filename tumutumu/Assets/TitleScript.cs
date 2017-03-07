@@ -1,22 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-public class SceneLoad_Title_to_Select : MonoBehaviour {
+public class TitleScript : MonoBehaviour {
+    public Text HighScore;
 
 	// Use this for initialization
 	void Start () {
-		
+        int high = ScoreScript.getHighScore();
+        HighScore.text = "HIGH SCORE: " + high;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
 	}
-
-    public void SceneLoad()
-    {
-        SceneManager.LoadScene("Cannon_test01");
-    }
 }
