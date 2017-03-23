@@ -217,25 +217,3 @@ pip-log.txt
 
 Library
 Temp
-*.pidb
-*.unityproj
-*.sln
-*.userprefs
-*.jpg
-*.png
-*.mat
-*.shader
-*.tif
-*.cginc
-*.psd
-*.flare
-*.txt
-*.fbx
-*.csproj
-*.asset
-*.meta
-*.tga
-*.bin
-*Editor*
-Standard Assets
-*.prefab
